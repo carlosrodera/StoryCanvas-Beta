@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cómics - StoryCanvas</title>
+    <link rel="stylesheet" href="../frontend/css/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" href="../frontend/assets/icons/favicon.ico" type="image/x-icon">
+    <script>
+        // Protección de la página
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body class="bg-light font-body text-dark">
+    <!-- Header -->
+    <header class="bg-secondary text-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-heading">
+                <a href="dashboard.html">PORTAL STORYCANVAS</a>
+            </div>
+            <div>
+                <span class="mr-4 font-body hidden sm:inline">Bienvenido, test@test.com</span>
+                <button id="logout-button" class="btn-primary !bg-red-500 !py-2 !px-4 !text-lg">SALIR</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex items-center mb-6">
+            <a href="dashboard.html" class="text-secondary hover:text-primary mr-4">← Volver al panel</a>
+            <h1 class="font-heading text-4xl text-primary">MIS CÓMICS</h1>
+        </div>
+
+        <!-- Buscador y filtros -->
+        <div class="comic-panel bg-panel1 mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow">
+                    <input type="text" placeholder="Buscar por título..." class="w-full px-3 py-2 border-2 border-dark rounded">
+                </div>
+                <div>
+                    <select class="px-3 py-2 border-2 border-dark rounded">
+                        <option value="recientes">Más recientes</option>
+                        <option value="antiguos">Más antiguos</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="btn-secondary !text-base !py-2">Buscar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galería de cómics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cómic 1 -->
+            <div class="comic-panel bg-panel2 hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative pb-[56.25%] mb-4 overflow-hidden rounded-md bg-gray-100">
+                    <!-- Portada del cómic -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-300 text-gray-600 font-heading text-xl text-center p-4">
+                        Marketing Digital Básico
+                    </div>
+                </div>
+                <h3 class="font-heading text-xl text-secondary">Marketing Digital Básico</h3>
+                <p class="font-body text-sm mb-2"><strong>Fecha:</strong> 05/03/2025</p>
+                <p class="font-body text-sm mb-2"><strong>Páginas:</strong> 12</p>
+                <p class="font-body text-sm mb-4"><strong>Formato:</strong> PDF, JPG</p>
+                <div class="flex justify-between">
+                    <button class="btn-secondary !text-base !py-1 !px-3">Vista previa</button>
+                    <button class="btn-primary !text-base !py-1 !px-3">Descargar</button>
+                </div>
+            </div>
+
+            <!-- Cómic 2 -->
+            <div class="comic-panel bg-panel3 hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative pb-[56.25%] mb-4 overflow-hidden rounded-md bg-gray-100">
+                    <!-- Portada del cómic -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-300 text-gray-600 font-heading text-xl text-center p-4">
+                        Automatización de Tareas
+                    </div>
+                </div>
+                <h3 class="font-heading text-xl text-secondary">Automatización de Tareas</h3>
+                <p class="font-body text-sm mb-2"><strong>Fecha:</strong> 20/01/2025</p>
+                <p class="font-body text-sm mb-2"><strong>Páginas:</strong> 8</p>
+                <p class="font-body text-sm mb-4"><strong>Formato:</strong> PDF, JPG, PNG</p>
+                <div class="flex justify-between">
+                    <button class="btn-secondary !text-base !py-1 !px-3">Vista previa</button>
+                    <button class="btn-primary !text-base !py-1 !px-3">Descargar</button>
+                </div>
+            </div>
+
+            <!-- Cómic 3 -->
+            <div class="comic-panel bg-panel1 hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative pb-[56.25%] mb-4 overflow-hidden rounded-md bg-gray-100">
+                    <!-- Portada del cómic -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-300 text-gray-600 font-heading text-xl text-center p-4">
+                        Estrategias de Monetización
+                    </div>
+                </div>
+                <h3 class="font-heading text-xl text-secondary">Estrategias de Monetización</h3>
+                <p class="font-body text-sm mb-2"><strong>Fecha:</strong> 15/12/2024</p>
+                <p class="font-body text-sm mb-2"><strong>Páginas:</strong> 14</p>
+                <p class="font-body text-sm mb-4"><strong>Formato:</strong> PDF, JPG</p>
+                <div class="flex justify-between">
+                    <button class="btn-secondary !text-base !py-1 !px-3">Vista previa</button>
+                    <button class="btn-primary !text-base !py-1 !px-3">Descargar</button>
+                </div>
+            </div>
+
+            <!-- Cómic 4 -->
+            <div class="comic-panel bg-panel2 hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative pb-[56.25%] mb-4 overflow-hidden rounded-md bg-gray-100">
+                    <!-- Portada del cómic -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-300 text-gray-600 font-heading text-xl text-center p-4">
+                        Liderazgo Digital
+                    </div>
+                </div>
+                <h3 class="font-heading text-xl text-secondary">Liderazgo Digital</h3>
+                <p class="font-body text-sm mb-2"><strong>Fecha:</strong> 30/11/2024</p>
+                <p class="font-body text-sm mb-2"><strong>Páginas:</strong> 10</p>
+                <p class="font-body text-sm mb-4"><strong>Formato:</strong> PDF, JPG</p>
+                <div class="flex justify-between">
+                    <button class="btn-secondary !text-base !py-1 !px-3">Vista previa</button>
+                    <button class="btn-primary !text-base !py-1 !px-3">Descargar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginación -->
+        <div class="flex justify-center mt-8 space-x-2">
+            <button class="px-4 py-2 border-2 border-dark rounded-md bg-white hover:bg-panel1">1</button>
+            <button class="px-4 py-2 border-2 border-dark rounded-md bg-white hover:bg-panel1">2</button>
+            <button class="px-4 py-2 border-2 border-dark rounded-md bg-white hover:bg-panel1">3</button>
+            <button class="px-4 py-2 border-2 border-dark rounded-md bg-white hover:bg-panel1">→</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-16">
+        <div class="footer-copyright">
+            <p>&copy; 2025 StoryCanvas Educativo Portal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', () => {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

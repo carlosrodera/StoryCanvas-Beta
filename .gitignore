@@ -1,0 +1,90 @@
+# Dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de caché
+.cache/
+.parcel-cache/
+.npm/
+.eslintcache
+.stylelintcache
+
+# Archivos de construcción
+/dist/
+/build/
+/out/
+
+# Archivos de registro
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Carpetas de sistema
+.DS_Store
+Thumbs.db
+.directory
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Archivos de configuración de IDEs/editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.tmproj
+.history/
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+*~
+
+# Archivos específicos del proyecto
+# Añade aquí archivos que no quieras incluir en el repositorio
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Carpetas de archivos generados por usuarios
+uploads/
+user_content/
+
+# Claves de API y archivos de configuración sensibles
+**/apikeys.js
+**/secrets.js
+**/config.prod.js

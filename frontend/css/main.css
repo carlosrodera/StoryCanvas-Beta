@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Componentes de cómic */
+@layer components {
+  .comic-panel {
+    @apply bg-white rounded-lg border-4 border-dark shadow-xl relative overflow-hidden p-6 my-4; /* Added padding and margin */
+  }
+
+  .comic-panel-large {
+    @apply comic-panel p-8 md:p-12 my-8 md:my-12; /* Increased padding and margin */
+  }
+
+  .comic-strip {
+    @apply flex flex-col md:flex-row gap-6 my-12;
+  }
+
+  .comic-strip-vertical {
+    @apply flex flex-col gap-6 my-12;
+  }
+
+  .comic-panels-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12;
+  }
+
+  .comic-bubble {
+    @apply relative bg-white p-6 rounded-2xl border-2 border-dark shadow-md; /* Added shadow */
+  }
+
+  /* Speech bubble tail */
+  .comic-bubble.speech-left::after {
+    content: '';
+    @apply absolute w-4 h-4 bg-white border-r-2 border-b-2 border-dark rotate-45;
+    bottom: -8px; /* Position tail at the bottom */
+    left: 30px; /* Position tail towards the left */
+    transform: translateX(-50%) rotate(45deg); /* Center and rotate */
+  }
+   .comic-bubble.speech-right::after {
+    content: '';
+    @apply absolute w-4 h-4 bg-white border-l-2 border-b-2 border-dark rotate-45;
+    bottom: -8px; /* Position tail at the bottom */
+    right: 30px; /* Position tail towards the right */
+    transform: translateX(50%) rotate(-45deg); /* Center and rotate */
+  }
+
+  .btn-primary {
+    @apply inline-block bg-primary text-white font-heading text-xl py-3 px-6 rounded-lg
+    shadow-lg transform transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95; /* Added inline-block and active state */
+  }
+
+  .btn-secondary {
+    @apply inline-block bg-secondary text-white font-heading text-xl py-3 px-6 rounded-lg
+    shadow-lg transform transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95; /* Added inline-block and active state */
+  }
+
+  .section-header {
+      @apply text-center mb-8 md:mb-12;
+  }
+
+  .section-header h2 {
+      @apply font-heading text-4xl md:text-5xl text-secondary mb-2;
+  }
+
+  .section-header p {
+      @apply font-body text-lg text-dark;
+  }
+
+  .comic-list {
+      @apply list-none p-0 m-0;
+  }
+
+  .comic-list li {
+      @apply font-body text-base md:text-lg mb-2 flex items-start;
+  }
+
+   .comic-list li::before {
+       content: attr(data-icon); /* Use data-icon for list markers */
+       @apply mr-2 text-primary font-bold text-xl;
+   }
+
+   /* Specific styles for problem/solution lists */
+   .problem .comic-list li::before { content: '❌'; @apply text-red-500; }
+   .solution .comic-list li::before { content: '✅'; @apply text-green-500; }
+
+   /* Pricing Card Styles */
+    .pricing-card {
+        @apply comic-panel flex flex-col;
+    }
+    .pricing-card .card-header {
+        @apply bg-secondary text-white p-4 rounded-t-lg text-center;
+    }
+    .pricing-card .card-header h3 {
+        @apply font-heading text-2xl mb-1;
+    }
+    .pricing-card .card-header .price {
+        @apply font-body font-bold text-xl;
+    }
+    .pricing-card .card-content {
+        @apply p-6 flex-grow; /* flex-grow makes content take available space */
+    }
+    .pricing-card .features-list {
+        @apply list-disc list-inside font-body text-dark space-y-2;
+    }
+     .pricing-card .card-footer {
+        @apply p-4 text-center mt-auto; /* mt-auto pushes footer to bottom */
+    }
+
+    /* Footer Styles */
+    .site-footer {
+        @apply bg-dark text-light py-8 mt-16;
+    }
+    .footer-content {
+        @apply container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6;
+    }
+    .footer-logo img {
+        @apply h-12; /* Adjust height as needed */
+    }
+    .footer-links a {
+        @apply text-light hover:text-primary transition-colors duration-200 mx-2;
+    }
+    .footer-social a {
+        @apply text-light hover:text-primary transition-colors duration-200 text-2xl mx-2; /* Added text size */
+    }
+    .footer-copyright {
+        @apply text-center text-sm text-gray-400 mt-6 pt-4 border-t border-gray-700;
+    }
+}

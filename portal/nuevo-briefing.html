@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Briefing - StoryCanvas</title>
+    <link rel="stylesheet" href="../frontend/css/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" href="../frontend/assets/icons/favicon.ico" type="image/x-icon">
+    <script>
+        // Protección de la página
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body class="bg-light font-body text-dark">
+    <!-- Header -->
+    <header class="bg-secondary text-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-heading">
+                <a href="dashboard.html">PORTAL STORYCANVAS</a>
+            </div>
+            <div>
+                <span class="mr-4 font-body hidden sm:inline">Bienvenido, test@test.com</span>
+                <button id="logout-button" class="btn-primary !bg-red-500 !py-2 !px-4 !text-lg">SALIR</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex items-center mb-6">
+            <a href="dashboard.html" class="text-secondary hover:text-primary mr-4">← Volver al panel</a>
+            <h1 class="font-heading text-4xl text-primary">NUEVO BRIEFING</h1>
+        </div>
+
+        <!-- Progreso del formulario -->
+        <div class="comic-panel bg-panel1 mb-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-2">1</div>
+                    <span class="font-semibold">Información básica</span>
+                </div>
+                <div class="hidden md:block w-20 h-1 bg-gray-300"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold mr-2">2</div>
+                    <span class="text-gray-500">Contenido</span>
+                </div>
+                <div class="hidden md:block w-20 h-1 bg-gray-300"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold mr-2">3</div>
+                    <span class="text-gray-500">Estilo y formato</span>
+                </div>
+                <div class="hidden md:block w-20 h-1 bg-gray-300"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold mr-2">4</div>
+                    <span class="text-gray-500">Revisión y envío</span>
+                </div>
+            </div>
+        </div>
+
+        <form id="briefing-form" class="comic-panel bg-panel2">
+            <!-- Paso 1: Información básica -->
+            <div id="step-1" class="active-step">
+                <h2 class="font-heading text-2xl text-secondary mb-6">Información básica del proyecto</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Título del cómic *</label>
+                        <input type="text" required placeholder="Ej. Introducción a la Inteligencia Artificial" class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                        <p class="text-sm text-gray-600 mt-1">Un título descriptivo para identificar tu cómic</p>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Categoría *</label>
+                        <select required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                            <option value="">Selecciona una categoría</option>
+                            <option value="technology">Tecnología</option>
+                            <option value="business">Negocios</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="education">Educación</option>
+                            <option value="science">Ciencia</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label class="block font-body font-semibold mb-1">Breve descripción del proyecto *</label>
+                        <textarea required placeholder="Describe brevemente el propósito de este cómic educativo..." class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary" rows="3"></textarea>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="font-heading text-xl text-secondary mb-4">Audiencia objetivo</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-body font-semibold mb-1">Perfil del lector *</label>
+                            <select required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                                <option value="">Selecciona un perfil</option>
+                                <option value="beginner">Principiantes en la materia</option>
+                                <option value="intermediate">Conocimientos intermedios</option>
+                                <option value="advanced">Usuarios avanzados</option>
+                                <option value="mixed">Audiencia mixta</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block font-body font-semibold mb-1">Edad aproximada</label>
+                            <select class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                                <option value="">Selecciona un rango de edad</option>
+                                <option value="children">Niños (7-12)</option>
+                                <option value="teenagers">Adolescentes (13-17)</option>
+                                <option value="young-adults">Jóvenes adultos (18-25)</option>
+                                <option value="adults">Adultos (26-50)</option>
+                                <option value="seniors">Seniors (51+)</option>
+                                <option value="all-ages">Todas las edades</option>
+                            </select>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label class="block font-body font-semibold mb-1">Contexto de uso</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="context-training" class="w-5 h-5 mr-2">
+                                    <label for="context-training">Formación corporativa</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="context-marketing" class="w-5 h-5 mr-2">
+                                    <label for="context-marketing">Marketing de contenidos</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="context-education" class="w-5 h-5 mr-2">
+                                    <label for="context-education">Educación académica</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="context-other" class="w-5 h-5 mr-2">
+                                    <label for="context-other">Otro uso</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-end">
+                    <button type="button" class="btn-primary" id="next-to-2">Siguiente: Contenido →</button>
+                </div>
+            </div>
+            
+            <!-- Paso 2: Contenido (inicialmente oculto) -->
+            <div id="step-2" class="step hidden">
+                <h2 class="font-heading text-2xl text-secondary mb-6">Detalles del contenido</h2>
+                
+                <div class="mb-8">
+                    <label class="block font-body font-semibold mb-1">Contenido principal *</label>
+                    <textarea required placeholder="Detalla el contenido que quieres transformar en cómic. Incluye conceptos clave, mensajes importantes, y cualquier información específica que deba incluirse..." class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary" rows="8"></textarea>
+                    <p class="text-sm text-gray-600 mt-1">Cuanto más detallado sea tu contenido, mejor podremos adaptarlo a formato cómic.</p>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block font-body font-semibold mb-1">Objetivos de aprendizaje *</label>
+                    <p class="text-sm text-gray-600 mb-2">¿Qué debería aprender o entender tu audiencia después de leer este cómic?</p>
+                    <div id="learning-objectives" class="space-y-2">
+                        <div class="flex items-center">
+                            <input type="text" placeholder="Objetivo 1" class="flex-grow px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary mr-2">
+                            <button type="button" class="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300">×</button>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" placeholder="Objetivo 2" class="flex-grow px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary mr-2">
+                            <button type="button" class="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300">×</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-objective" class="mt-2 text-secondary hover:text-primary flex items-center">
+                        <span class="mr-1">+</span> Añadir otro objetivo
+                    </button>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="font-heading text-xl text-secondary mb-4">Archivos de referencia</h3>
+                    <p class="text-sm text-gray-600 mb-2">Sube cualquier material que pueda ayudarnos a entender mejor tu contenido (opcional)</p>
+                    
+                    <div class="border-2 border-dark border-dashed rounded-lg p-6 text-center">
+                        <div class="mb-4">
+                            <span class="block text-xl mb-2">📁</span>
+                            <p>Arrastra archivos aquí o haz clic para seleccionar</p>
+                            <p class="text-sm text-gray-600">PDF, DOC, PPT, JPG, PNG (máx. 10MB)</p>
+                        </div>
+                        <input type="file" multiple class="hidden" id="file-upload">
+                        <button type="button" id="upload-btn" class="btn-secondary !text-base !py-2">Seleccionar archivos</button>
+                    </div>
+                    
+                    <div id="upload-list" class="mt-4 hidden">
+                        <h4 class="font-semibold mb-2">Archivos seleccionados:</h4>
+                        <ul class="list-disc list-inside"></ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-between">
+                    <button type="button" class="btn-secondary" id="back-to-1">← Anterior</button>
+                    <button type="button" class="btn-primary" id="next-to-3">Siguiente: Estilo →</button>
+                </div>
+            </div>
+            
+            <!-- Paso 3: Estilo y formato (inicialmente oculto) -->
+            <div id="step-3" class="step hidden">
+                <h2 class="font-heading text-2xl text-secondary mb-6">Estilo y formato</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Estilo visual *</label>
+                        <select required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                            <option value="">Selecciona un estilo</option>
+                            <option value="cartoon">Cartoon clásico</option>
+                            <option value="manga">Estilo manga</option>
+                            <option value="minimalist">Minimalista</option>
+                            <option value="realistic">Semi-realista</option>
+                            <option value="infographic">Infográfico</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Formato de entrega *</label>
+                        <select required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                            <option value="">Selecciona formato</option>
+                            <option value="pdf">PDF</option>
+                            <option value="images">Imágenes separadas (JPG/PNG)</option>
+                            <option value="both">Ambos formatos</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Longitud aproximada *</label>
+                        <select required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary">
+                            <option value="">Selecciona longitud</option>
+                            <option value="short">Corto (1-3 páginas)</option>
+                            <option value="medium">Medio (4-8 páginas)</option>
+                            <option value="long">Extenso (9-15 páginas)</option>
+                            <option value="custom">Personalizado</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-body font-semibold mb-1">Colores predominantes</label>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="color-blue" class="w-5 h-5 mr-1">
+                                <label for="color-blue" class="w-6 h-6 bg-blue-500 rounded"></label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="color-red" class="w-5 h-5 mr-1">
+                                <label for="color-red" class="w-6 h-6 bg-red-500 rounded"></label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="color-green" class="w-5 h-5 mr-1">
+                                <label for="color-green" class="w-6 h-6 bg-green-500 rounded"></label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="color-yellow" class="w-5 h-5 mr-1">
+                                <label for="color-yellow" class="w-6 h-6 bg-yellow-400 rounded"></label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="color-purple" class="w-5 h-5 mr-1">
+                                <label for="color-purple" class="w-6 h-6 bg-purple-500 rounded"></label>
+                            </div>
+                            <button type="button" class="text-secondary hover:text-primary text-sm">+ Más</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="font-heading text-xl text-secondary mb-4">Personajes</h3>
+                    <p class="text-sm text-gray-600 mb-2">¿Necesitas personajes específicos en tu cómic?</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <input type="radio" id="characters-library" name="characters" value="library" class="w-5 h-5 mr-2 mt-1" checked>
+                            <div>
+                                <label for="characters-library" class="font-semibold">Usar biblioteca de personajes</label>
+                                <p class="text-sm text-gray-600">Utilizaremos personajes de nuestra biblioteca según el contexto</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <input type="radio" id="characters-custom" name="characters" value="custom" class="w-5 h-5 mr-2 mt-1">
+                            <div>
+                                <label for="characters-custom" class="font-semibold">Personajes personalizados</label>
+                                <p class="text-sm text-gray-600">Describe los personajes que necesitas</p>
+                            </div>
+                        </div>
+                        
+                        <div id="custom-characters" class="pl-7 hidden">
+                            <textarea placeholder="Describe los personajes que necesitas (nombres, apariencia, personalidad)..." class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block font-body font-semibold mb-1">Notas adicionales sobre el estilo</label>
+                    <textarea placeholder="Cualquier preferencia específica sobre el estilo, tono, elementos visuales..." class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary" rows="3"></textarea>
+                </div>
+                
+                <div class="mt-8 flex justify-between">
+                    <button type="button" class="btn-secondary" id="back-to-2">← Anterior</button>
+                    <button type="button" class="btn-primary" id="next-to-4">Siguiente: Revisión →</button>
+                </div>
+            </div>
+            
+            <!-- Paso 4: Revisión y envío (inicialmente oculto) -->
+            <div id="step-4" class="step hidden">
+                <h2 class="font-heading text-2xl text-secondary mb-6">Revisión y envío</h2>
+                
+                <div class="mb-8">
+                    <p class="font-body mb-4">Por favor, revisa los detalles de tu briefing antes de enviarlo:</p>
+                    
+                    <div class="bg-white rounded-lg border-2 border-dark p-6">
+                        <h3 class="font-heading text-xl text-secondary mb-4">Resumen del briefing</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold">Información básica</h4>
+                                <p><strong>Título:</strong> <span id="summary-title">Introducción a la Inteligencia Artificial</span></p>
+                                <p><strong>Categoría:</strong> <span id="summary-category">Tecnología</span></p>
+                                <p><strong>Audiencia:</strong> <span id="summary-audience">Principiantes en la materia</span></p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold">Contenido</h4>
+                                <p><strong>Objetivos:</strong> <span id="summary-objectives">2 objetivos definidos</span></p>
+                                <p><strong>Referencias:</strong> <span id="summary-references">No hay archivos adjuntos</span></p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold">Estilo y formato</h4>
+                                <p><strong>Estilo:</strong> <span id="summary-style">Cartoon clásico</span></p>
+                                <p><strong>Formato:</strong> <span id="summary-format">PDF</span></p>
+                                <p><strong>Longitud:</strong> <span id="summary-length">Medio (4-8 páginas)</span></p>
+                                <p><strong>Personajes:</strong> <span id="summary-characters">Biblioteca de personajes</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="font-heading text-xl text-secondary mb-4">Fecha de entrega estimada</h3>
+                    <div class="bg-green-100 text-green-800 p-4 rounded-lg border-2 border-green-300">
+                        <p class="font-semibold">Entrega estimada: 7 días laborables</p>
+                        <p class="text-sm">Recibirás tu cómic aproximadamente el 07/04/2025</p>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms-agreement" class="w-5 h-5 mr-2 mt-1" required>
+                        <label for="terms-agreement" class="text-sm">He leído y acepto los <a href="#" class="text-primary hover:underline">términos y condiciones</a> del servicio. Entiendo que la información proporcionada se utilizará para crear el cómic educativo solicitado.</label>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-between">
+                    <button type="button" class="btn-secondary" id="back-to-3">← Anterior</button>
+                    <button type="submit" class="btn-primary !bg-green-600">Enviar briefing</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-16">
+        <div class="footer-copyright">
+            <p>&copy; 2025 StoryCanvas Educativo Portal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación entre pasos
+        const steps = ['1', '2', '3', '4'];
+        
+        // Botones de navegación
+        document.getElementById('next-to-2').addEventListener('click', () => showStep('2'));
+        document.getElementById('back-to-1').addEventListener('click', () => showStep('1'));
+        document.getElementById('next-to-3').addEventListener('click', () => showStep('3'));
+        document.getElementById('back-to-2').addEventListener('click', () => showStep('2'));
+        document.getElementById('next-to-4').addEventListener('click', () => showStep('4'));
+        document.getElementById('back-to-3').addEventListener('click', () => showStep('3'));
+        
+        function showStep(stepNumber) {
+            // Ocultar todos los pasos
+            steps.forEach(step => {
+                document.getElementById(`step-${step}`).classList.add('hidden');
+                document.getElementById(`step-${step}`).classList.remove('active-step');
+            });
+            
+            // Mostrar el paso seleccionado
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+            document.getElementById(`step-${stepNumber}`).classList.add('active-step');
+            
+            // Actualizar la barra de progreso
+            steps.forEach(step => {
+                const stepElement = document.querySelector(`div:nth-child(${(step * 2) - 1})`);
+                if (parseInt(step) < parseInt(stepNumber)) {
+                    // Pasos anteriores
+                    stepElement.querySelector('div').classList.remove('bg-gray-300');
+                    stepElement.querySelector('div').classList.add('bg-primary');
+                    stepElement.querySelector('span').classList.remove('text-gray-500');
+                } else if (parseInt(step) === parseInt(stepNumber)) {
+                    // Paso actual
+                    stepElement.querySelector('div').classList.remove('bg-gray-300');
+                    stepElement.querySelector('div').classList.add('bg-primary');
+                    stepElement.querySelector('span').classList.remove('text-gray-500');
+                }
+            });
+        }
+        
+        // Manejo de objetivos de aprendizaje
+        document.getElementById('add-objective').addEventListener('click', () => {
+            const container = document.getElementById('learning-objectives');
+            const newObjective = document.createElement('div');
+            newObjective.className = 'flex items-center';
+            newObjective.innerHTML = `
+                <input type="text" placeholder="Nuevo objetivo" class="flex-grow px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary mr-2">
+                <button type="button" class="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300">×</button>
+            `;
+            container.appendChild(newObjective);
+            
+            // Añadir evento al botón de eliminar
+            newObjective.querySelector('button').addEventListener('click', function() {
+                container.removeChild(newObjective);
+            });
+        });
+        
+        // Manejo de los botones de eliminar objetivos existentes
+        document.querySelectorAll('#learning-objectives button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (document.querySelectorAll('#learning-objectives > div').length > 1) {
+                    this.parentElement.remove();
+                }
+            });
+        });
+        
+        // Toggle de personajes personalizados
+        document.getElementById('characters-custom').addEventListener('change', () => {
+            document.getElementById('custom-characters').classList.remove('hidden');
+        });
+        
+        document.getElementById('characters-library').addEventListener('change', () => {
+            document.getElementById('custom-characters').classList.add('hidden');
+        });
+        
+        // Manejo de subida de archivos
+        document.getElementById('upload-btn').addEventListener('click', () => {
+            document.getElementById('file-upload').click();
+        });
+        
+        document.getElementById('file-upload').addEventListener('change', function() {
+            const fileList = this.files;
+            if (fileList.length > 0) {
+                const uploadList = document.getElementById('upload-list');
+                uploadList.classList.remove('hidden');
+                
+                const listElement = uploadList.querySelector('ul');
+                listElement.innerHTML = '';
+                
+                for (let i = 0; i < fileList.length; i++) {
+                    const item = document.createElement('li');
+                    item.textContent = fileList[i].name;
+                    listElement.appendChild(item);
+                }
+            }
+        });
+        
+        // Envío del formulario
+        document.getElementById('briefing-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Briefing enviado con éxito! Redirigiendo al panel...');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        });
+        
+        // Logout
+        document.getElementById('logout-button').addEventListener('click', () => {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

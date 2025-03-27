@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - StoryCanvas</title>
+    <link rel="stylesheet" href="../frontend/css/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" href="../frontend/assets/icons/favicon.ico" type="image/x-icon">
+    <script>
+        // Protección de la página
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body class="bg-light font-body text-dark">
+    <!-- Header -->
+    <header class="bg-secondary text-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-heading">
+                <a href="dashboard.html">PORTAL STORYCANVAS</a>
+            </div>
+            <div>
+                <span class="mr-4 font-body hidden sm:inline">Bienvenido, test@test.com</span>
+                <button id="logout-button" class="btn-primary !bg-red-500 !py-2 !px-4 !text-lg">SALIR</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex items-center mb-6">
+            <a href="dashboard.html" class="text-secondary hover:text-primary mr-4">← Volver al panel</a>
+            <h1 class="font-heading text-4xl text-primary">MIS PEDIDOS</h1>
+        </div>
+
+        <!-- Filtros de pedidos -->
+        <div class="comic-panel bg-panel1 mb-8">
+            <h2 class="font-heading text-xl text-secondary mb-4">Filtrar pedidos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block font-body font-semibold mb-1">Estado</label>
+                    <select class="w-full px-3 py-2 border-2 border-dark rounded">
+                        <option value="todos">Todos</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="en_proceso">En proceso</option>
+                        <option value="revision">En revisión</option>
+                        <option value="completado">Completado</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-body font-semibold mb-1">Fecha</label>
+                    <select class="w-full px-3 py-2 border-2 border-dark rounded">
+                        <option value="todos">Todas las fechas</option>
+                        <option value="mes">Este mes</option>
+                        <option value="trimestre">Último trimestre</option>
+                        <option value="anio">Este año</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-body font-semibold mb-1">Buscar</label>
+                    <input type="text" placeholder="Buscar por título..." class="w-full px-3 py-2 border-2 border-dark rounded">
+                </div>
+                <div class="flex items-end">
+                    <button class="btn-secondary !text-base !py-2">Aplicar filtros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de pedidos -->
+        <div class="space-y-4">
+            <!-- Pedido 1 -->
+            <div class="comic-panel bg-white hover:bg-panel1 transition-colors duration-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="font-heading text-xl text-secondary">Cómic: Introducción a la Inteligencia Artificial</h3>
+                        <p class="font-body text-dark"><strong>Referencia:</strong> #PED-2025-001</p>
+                        <p class="font-body text-dark"><strong>Solicitado:</strong> 15/03/2025</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-2 md:items-center">
+                        <span class="inline-block bg-yellow-200 text-yellow-800 py-1 px-3 rounded-full text-sm font-semibold">
+                            En proceso
+                        </span>
+                        <button class="btn-secondary !text-base !py-1 !px-3">Ver detalles</button>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-body text-dark"><strong>Progreso:</strong></p>
+                            <div class="w-48 md:w-96 h-4 bg-gray-200 rounded-full mt-1">
+                                <div class="h-4 bg-secondary rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <p class="font-body text-dark"><strong>Entrega estimada:</strong> 22/03/2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 2 -->
+            <div class="comic-panel bg-white hover:bg-panel1 transition-colors duration-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="font-heading text-xl text-secondary">Cómic: Marketing Digital Básico</h3>
+                        <p class="font-body text-dark"><strong>Referencia:</strong> #PED-2025-002</p>
+                        <p class="font-body text-dark"><strong>Solicitado:</strong> 20/02/2025</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-2 md:items-center">
+                        <span class="inline-block bg-green-200 text-green-800 py-1 px-3 rounded-full text-sm font-semibold">
+                            Completado
+                        </span>
+                        <button class="btn-secondary !text-base !py-1 !px-3">Ver detalles</button>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-body text-dark"><strong>Progreso:</strong></p>
+                            <div class="w-48 md:w-96 h-4 bg-gray-200 rounded-full mt-1">
+                                <div class="h-4 bg-green-500 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <p class="font-body text-dark"><strong>Entregado:</strong> 05/03/2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 3 -->
+            <div class="comic-panel bg-white hover:bg-panel1 transition-colors duration-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="font-heading text-xl text-secondary">Cómic: Introducción al Emprendimiento</h3>
+                        <p class="font-body text-dark"><strong>Referencia:</strong> #PED-2025-003</p>
+                        <p class="font-body text-dark"><strong>Solicitado:</strong> 10/03/2025</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-2 md:items-center">
+                        <span class="inline-block bg-blue-200 text-blue-800 py-1 px-3 rounded-full text-sm font-semibold">
+                            En revisión
+                        </span>
+                        <button class="btn-secondary !text-base !py-1 !px-3">Ver detalles</button>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-body text-dark"><strong>Progreso:</strong></p>
+                            <div class="w-48 md:w-96 h-4 bg-gray-200 rounded-full mt-1">
+                                <div class="h-4 bg-secondary rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <p class="font-body text-dark"><strong>Entrega estimada:</strong> 18/03/2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-16">
+        <div class="footer-copyright">
+            <p>&copy; 2025 StoryCanvas Educativo Portal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', () => {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

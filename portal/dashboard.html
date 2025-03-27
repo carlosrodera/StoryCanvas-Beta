@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StoryCanvas Educativo Portal</title>
+    <!-- Link to the compiled CSS from the frontend directory -->
+    <link rel="stylesheet" href="../frontend/css/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <!-- Basic Favicon Placeholder -->
+    <link rel="icon" href="../frontend/assets/icons/favicon.ico" type="image/x-icon">
+    <script>
+        // Protect this page: Redirect to login if not logged in
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body class="bg-light font-body text-dark">
+
+    <!-- Portal Header -->
+    <header class="bg-secondary text-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-heading">
+                <a href="dashboard.html">PORTAL STORYCANVAS</a> <!-- Portal Title -->
+            </div>
+            <div>
+                <span class="mr-4 font-body hidden sm:inline">Bienvenido, test@test.com</span>
+                <button id="logout-button" class="btn-primary !bg-red-500 !py-2 !px-4 !text-lg">SALIR</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <h1 class="font-heading text-4xl text-primary mb-8">TU PANEL DE CONTROL</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Mis Pedidos -->
+            <div class="comic-panel bg-panel1">
+                <h2 class="font-heading text-2xl text-secondary mb-4">MIS PEDIDOS</h2>
+                <p class="font-body mb-4">Aquí podrás ver el estado de tus pedidos de cómics educativos.</p>
+                <div class="bg-gray-300 h-32 rounded-md flex items-center justify-center text-gray-500">[Lista de Pedidos Placeholder]</div>
+                <div class="mt-4 text-center">
+                     <a href="pedidos.html" class="btn-secondary !text-base !py-1 !px-3">VER PEDIDOS</a>
+                </div>
+            </div>
+
+            <!-- Mis Cómics -->
+            <div class="comic-panel bg-panel2">
+                <h2 class="font-heading text-2xl text-secondary mb-4">MIS CÓMICS</h2>
+                <p class="font-body mb-4">Accede y descarga tus cómics finalizados.</p>
+                 <div class="bg-gray-300 h-32 rounded-md flex items-center justify-center text-gray-500">[Galería de Cómics Placeholder]</div>
+                 <div class="mt-4 text-center">
+                     <a href="comics.html" class="btn-secondary !text-base !py-1 !px-3">VER CÓMICS</a>
+                </div>
+            </div>
+
+            <!-- Mi Cuenta -->
+            <div class="comic-panel bg-panel3">
+                <h2 class="font-heading text-2xl text-secondary mb-4">MI CUENTA</h2>
+                <p class="font-body mb-4">Gestiona tu información de perfil y facturación.</p>
+                 <div class="bg-gray-300 h-32 rounded-md flex items-center justify-center text-gray-500">[Formulario Cuenta Placeholder]</div>
+                 <div class="mt-4 text-center">
+                     <a href="cuenta.html" class="btn-secondary !text-base !py-1 !px-3">GESTIONAR CUENTA</a>
+                </div>
+            </div>
+
+             <!-- Nuevo Proyecto -->
+            <div class="comic-panel bg-green-100 md:col-span-2 lg:col-span-3">
+                <h2 class="font-heading text-2xl text-green-700 mb-4">¡NUEVO PROYECTO!</h2>
+                <p class="font-body mb-4">¿Listo para transformar más contenido? Inicia un nuevo briefing aquí.</p>
+                 <div class="text-center">
+                     <a href="nuevo-briefing.html" class="btn-primary !bg-green-600">CREAR NUEVO BRIEFING</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <footer class="site-footer mt-16">
+         <div class="footer-copyright">
+            <p>&copy; 2025 StoryCanvas Educativo Portal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const logoutButton = document.getElementById('logout-button');
+
+        logoutButton.addEventListener('click', () => {
+            // Clear the login flag
+            sessionStorage.removeItem('isLoggedIn');
+            // Redirect to login page
+            window.location.href = 'login.html';
+        });
+    </script>
+
+</body>
+</html>
