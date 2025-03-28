@@ -8,87 +8,164 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-    <!-- Basic Favicon Placeholder -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilos adicionales para mejorar el menú */
+        :root {
+            --color-primary: #FF5A5F;
+            --color-secondary: #3D5A80;
+            --color-accent: #FFB400;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #2E7D32; /* Verde oscuro */
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover {
+            color: #2E7D32; /* Verde oscuro */
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #2E7D32; /* Verde oscuro */
+        }
+        
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        /* Mejoras para los botones */
+        .btn-primary, .btn-secondary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Mejoras para el logo */
+        .logo-text {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .logo-badge {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            vertical-align: top;
+            margin-left: 0.25rem;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body class="bg-light font-body text-dark">
 
-    <!-- Header/Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Header/Navigation - MEJORADO -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-2xl font-heading text-primary">
-                <a href="#">StoryCanvas Edu</a> <!-- Placeholder Logo/Brand -->
+            <div class="text-2xl font-heading">
+                <a href="#" class="flex items-center">
+                    <span class="logo-text text-secondary">STORY</span><span class="logo-text text-primary">CANVAS</span>
+                    <span class="logo-badge bg-accent text-white">EDU</span>
+                </a>
             </div>
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#hero" class="font-body hover:text-primary">Inicio</a>
-                <a href="#problem-solution" class="font-body hover:text-primary">Solución</a>
-                <a href="#services" class="font-body hover:text-primary">Servicios</a>
-                <a href="#process" class="font-body hover:text-primary">Proceso</a>
-                <a href="#pricing" class="font-body hover:text-primary">Precios</a>
-                <a href="#examples" class="font-body hover:text-primary">Ejemplos</a>
-                <a href="#contact" class="font-body hover:text-primary">Contacto</a>
-                <a href="../portal/login.html" class="btn-secondary !py-2 !px-4 !text-lg">Login</a> <!-- Link to Portal Login -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="#hero" class="nav-link active">Inicio</a>
+                <a href="#problem-solution" class="nav-link">Solución</a>
+                <a href="#services" class="nav-link">Servicios</a>
+                <a href="#process" class="nav-link">Proceso</a>
+                <a href="#pricing" class="nav-link">Precios</a>
+                <a href="#examples" class="nav-link">Ejemplos</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+                <a href="../portal/login.html" class="btn-secondary !py-2 !px-4 ml-2">LOGIN</a>
             </div>
-            <!-- Mobile Menu Button Placeholder -->
+            <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-dark focus:outline-none">
+                <button id="mobile-menu-button" class="text-dark focus:outline-none p-2 rounded hover:bg-gray-100">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
-        <!-- Mobile Menu Placeholder -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-2">
-             <a href="#hero" class="block px-4 py-2 font-body hover:bg-gray-100">Inicio</a>
-             <a href="#problem-solution" class="block px-4 py-2 font-body hover:bg-gray-100">Solución</a>
-             <a href="#services" class="block px-4 py-2 font-body hover:bg-gray-100">Servicios</a>
-             <a href="#process" class="block px-4 py-2 font-body hover:bg-gray-100">Proceso</a>
-             <a href="#pricing" class="block px-4 py-2 font-body hover:bg-gray-100">Precios</a>
-             <a href="#examples" class="block px-4 py-2 font-body hover:bg-gray-100">Ejemplos</a>
-             <a href="#contact" class="block px-4 py-2 font-body hover:bg-gray-100">Contacto</a>
-             <a href="../portal/login.html" class="block px-4 py-2 font-body text-secondary hover:bg-gray-100">Login</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 shadow-lg border-t border-gray-200 transition-all duration-300 ease-in-out">
+             <a href="#hero" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Inicio</a>
+             <a href="#problem-solution" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Solución</a>
+             <a href="#services" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Servicios</a>
+             <a href="#process" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Proceso</a>
+             <a href="#pricing" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Precios</a>
+             <a href="#examples" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Ejemplos</a>
+             <a href="#contact" class="block px-4 py-3 font-body hover:bg-gray-100 border-l-4 border-transparent hover:border-green-600 transition-all duration-200">Contacto</a>
+             <a href="../portal/login.html" class="block px-4 py-3 font-body text-white bg-secondary hover:bg-secondary-dark my-2 mx-4 rounded text-center transition-all duration-200 transform hover:translate-y-[-2px]">LOGIN</a>
         </div>
     </header>
 
     <main class="container mx-auto px-4">
 
         <!-- 1. Hero Section -->
-        <section id="hero" class="comic-panel-large flex flex-col md:flex-row items-center bg-panel1 mt-8">
-            <div class="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
+        <section id="hero" class="comic-panel-large flex flex-col md:flex-row items-center bg-panel1 mt-8 rounded-xl overflow-hidden">
+            <div class="md:w-1/2 text-center md:text-left mb-6 md:mb-0 p-6 md:p-8">
                 <div class="comic-bubble speech-left inline-block">
                     <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl text-primary mb-4">Convierte tu Contenido Educativo en Cómics Impactantes</h1>
                     <p class="font-body text-lg md:text-xl text-dark mb-6">Sin trabajo técnico. Sin dolores de cabeza. Solo resultados.</p>
-                    <a href="#contact" class="btn-primary">¡Quiero mi cómic educativo!</a>
+                    <a href="#contact" class="btn-primary transform transition hover:scale-105">¡Quiero mi cómic educativo!</a>
                 </div>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-1/2 p-4">
                 <!-- Placeholder for Hero Illustration -->
-                <div class="bg-gray-300 h-64 md:h-96 rounded-md flex items-center justify-center text-gray-500">
+                <div class="bg-gray-300 h-64 md:h-96 rounded-md flex items-center justify-center text-gray-500 transform transition hover:scale-95 shadow-lg">
                     [Ilustración: Contenido aburrido → Cómic atractivo]
                 </div>
             </div>
         </section>
 
-        <!-- 2. Problema-Solución -->
-        <section id="problem-solution" class="comic-strip">
-            <div class="comic-panel problem md:w-1/2 bg-panel3">
-                <h2 class="font-heading text-3xl text-center text-red-700 mb-4">El Reto Educativo</h2>
-                <p class="font-body text-center mb-4">El contenido técnico y formativo suele ser:</p>
-                <ul class="comic-list">
-                    <li>Difícil de entender</li>
-                    <li>Aburrido y poco atractivo</li>
-                    <li>Costoso de producir visualmente</li>
-                    <li>Complicado de mantener</li>
-                </ul>
-            </div>
-            <div class="comic-panel solution md:w-1/2 bg-panel1">
-                <h2 class="font-heading text-3xl text-center text-green-700 mb-4">Nuestra Solución</h2>
-                <p class="font-body text-center mb-4">StoryCanvas transforma tu contenido en:</p>
-                <ul class="comic-list">
-                    <li>Narrativas visuales atractivas</li>
-                    <li>Explicaciones claras y memorables</li>
-                    <li>Material profesional sin esfuerzo</li>
-                    <li>Contenido coherente y escalable</li>
-                </ul>
+        <!-- 2. Problema-Solución - ALINEACIÓN CENTRADA -->
+        <section id="problem-solution" class="my-16 max-w-4xl mx-auto text-center">
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <div class="comic-panel problem md:w-1/2 bg-panel3">
+                    <h2 class="font-heading text-3xl text-center text-red-700 mb-4">El Reto Educativo</h2>
+                    <p class="font-body text-center mb-4">El contenido técnico y formativo suele ser:</p>
+                    <ul class="comic-list mx-auto w-fit">
+                        <li>Difícil de entender</li>
+                        <li>Aburrido y poco atractivo</li>
+                        <li>Costoso de producir visualmente</li>
+                        <li>Complicado de mantener</li>
+                    </ul>
+                </div>
+                <div class="comic-panel solution md:w-1/2 bg-panel1">
+                    <h2 class="font-heading text-3xl text-center text-green-700 mb-4">Nuestra Solución</h2>
+                    <p class="font-body text-center mb-4">StoryCanvas transforma tu contenido en:</p>
+                    <ul class="comic-list mx-auto w-fit">
+                        <li>Narrativas visuales atractivas</li>
+                        <li>Explicaciones claras y memorables</li>
+                        <li>Material profesional sin esfuerzo</li>
+                        <li>Contenido coherente y escalable</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -99,7 +176,7 @@
                 <p>Transformamos tu conocimiento en historias visuales</p>
             </div>
             <div class="comic-panels-grid">
-                <div class="comic-panel service bg-panel2">
+                <div class="comic-panel service bg-panel2 transform transition hover:scale-105">
                     <div class="panel-header text-center mb-4">
                         <h3 class="font-heading text-2xl text-secondary">Simplificación de lo Complejo</h3>
                     </div>
@@ -109,7 +186,7 @@
                         <p class="font-body text-center">Convertimos conceptos técnicos en narrativas visuales comprensibles para cualquier público.</p>
                     </div>
                 </div>
-                <div class="comic-panel service bg-panel1">
+                <div class="comic-panel service bg-panel1 transform transition hover:scale-105">
                     <div class="panel-header text-center mb-4">
                         <h3 class="font-heading text-2xl text-secondary">Formación y Onboarding</h3>
                     </div>
@@ -118,7 +195,7 @@
                         <p class="font-body text-center">Hacemos que la incorporación de nuevos empleados y la formación continua sean más atractivas.</p>
                     </div>
                 </div>
-                <div class="comic-panel service bg-panel3">
+                <div class="comic-panel service bg-panel3 transform transition hover:scale-105">
                     <div class="panel-header text-center mb-4">
                         <h3 class="font-heading text-2xl text-secondary">Marketing de Contenidos</h3>
                     </div>
@@ -139,7 +216,7 @@
 
             <div class="process-step flex flex-col md:flex-row items-center gap-4">
                 <div class="step-number font-heading text-6xl text-primary w-16 text-center">1</div>
-                <div class="comic-panel flex-1 bg-panel1">
+                <div class="comic-panel flex-1 bg-panel1 transform transition hover:scale-105">
                     <h3 class="font-heading text-2xl text-secondary mb-2">Briefing Inicial</h3>
                     <p class="font-body">Nos envías tu contenido y objetivos educativos. Definimos el alcance y estilo.</p>
                      <!-- Placeholder Illustration -->
@@ -148,7 +225,7 @@
             </div>
              <div class="process-step flex flex-col md:flex-row items-center gap-4">
                 <div class="step-number font-heading text-6xl text-primary w-16 text-center">2</div>
-                <div class="comic-panel flex-1 bg-panel2">
+                <div class="comic-panel flex-1 bg-panel2 transform transition hover:scale-105">
                     <h3 class="font-heading text-2xl text-secondary mb-2">Guionización</h3>
                     <p class="font-body">Creamos un guion gráfico que adapta tu contenido a una narrativa visual efectiva.</p>
                     <div class="bg-gray-300 h-24 rounded-md mt-4 flex items-center justify-center text-gray-500 text-sm">[Ilustración: Guion]</div>
@@ -156,7 +233,7 @@
             </div>
              <div class="process-step flex flex-col md:flex-row items-center gap-4">
                 <div class="step-number font-heading text-6xl text-primary w-16 text-center">3</div>
-                <div class="comic-panel flex-1 bg-panel3">
+                <div class="comic-panel flex-1 bg-panel3 transform transition hover:scale-105">
                     <h3 class="font-heading text-2xl text-secondary mb-2">Ilustración</h3>
                     <p class="font-body">Nuestros artistas dan vida al guion con ilustraciones estilo cómic personalizadas.</p>
                      <div class="bg-gray-300 h-24 rounded-md mt-4 flex items-center justify-center text-gray-500 text-sm">[Ilustración: Dibujo]</div>
@@ -164,7 +241,7 @@
             </div>
              <div class="process-step flex flex-col md:flex-row items-center gap-4">
                 <div class="step-number font-heading text-6xl text-primary w-16 text-center">4</div>
-                <div class="comic-panel flex-1 bg-panel1">
+                <div class="comic-panel flex-1 bg-panel1 transform transition hover:scale-105">
                     <h3 class="font-heading text-2xl text-secondary mb-2">Revisión</h3>
                     <p class="font-body">Te presentamos el borrador para que nos des tu feedback y realizamos ajustes.</p>
                      <div class="bg-gray-300 h-24 rounded-md mt-4 flex items-center justify-center text-gray-500 text-sm">[Ilustración: Revisión]</div>
@@ -172,7 +249,7 @@
             </div>
              <div class="process-step flex flex-col md:flex-row items-center gap-4">
                 <div class="step-number font-heading text-6xl text-primary w-16 text-center">5</div>
-                <div class="comic-panel flex-1 bg-panel2">
+                <div class="comic-panel flex-1 bg-panel2 transform transition hover:scale-105">
                     <h3 class="font-heading text-2xl text-secondary mb-2">Entrega Final</h3>
                     <p class="font-body">Recibes tu cómic educativo listo para usar en los formatos que necesites.</p>
                      <div class="bg-gray-300 h-24 rounded-md mt-4 flex items-center justify-center text-gray-500 text-sm">[Ilustración: Entrega]</div>
@@ -180,7 +257,7 @@
             </div>
 
             <div class="process-cta text-center mt-12">
-                <a href="#contact" class="btn-primary">¡Comienza tu proyecto!</a>
+                <a href="#contact" class="btn-primary transform transition hover:scale-105">¡Comienza tu proyecto!</a>
             </div>
         </section>
 
@@ -192,7 +269,7 @@
             </div>
             <div class="pricing-grid grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Paquete Inicial -->
-                <div class="pricing-card">
+                <div class="pricing-card transform transition duration-300 hover:shadow-xl">
                     <div class="card-header">
                         <h3>Paquete Inicial</h3>
                         <div class="price">495€/mes</div>
@@ -206,11 +283,11 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <a href="#contact" class="btn-secondary">¡Lo quiero!</a>
+                        <a href="#contact" class="btn-secondary transform transition hover:scale-105">¡Lo quiero!</a>
                     </div>
                 </div>
                 <!-- Paquete Profesional -->
-                 <div class="pricing-card border-4 border-accent scale-105"> <!-- Destacado -->
+                 <div class="pricing-card border-4 border-accent scale-105 transform transition duration-300 hover:shadow-xl"> <!-- Destacado -->
                     <div class="card-header !bg-accent text-dark">
                         <h3>Paquete Profesional</h3>
                         <div class="price">895€/mes</div>
@@ -225,11 +302,11 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <a href="#contact" class="btn-primary !bg-accent !text-dark">¡El más popular!</a>
+                        <a href="#contact" class="btn-primary !bg-accent !text-dark transform transition hover:scale-105">¡El más popular!</a>
                     </div>
                 </div>
                 <!-- Paquete Institucional -->
-                 <div class="pricing-card">
+                 <div class="pricing-card transform transition duration-300 hover:shadow-xl">
                     <div class="card-header">
                         <h3>Paquete Institucional</h3>
                         <div class="price">Consultar</div>
@@ -244,7 +321,7 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <a href="#contact" class="btn-secondary">Consultar</a>
+                        <a href="#contact" class="btn-secondary transform transition hover:scale-105">Consultar</a>
                     </div>
                 </div>
             </div>
@@ -269,25 +346,25 @@
             </div>
             <div class="examples-grid grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Placeholder Example 1 -->
-                <div class="comic-panel example-item" data-category="tech">
+                <div class="comic-panel example-item transform transition duration-300 hover:shadow-xl" data-category="tech">
                     <h4 class="font-heading text-xl text-secondary mb-2">Concepto Cloud (Tech)</h4>
                     <div class="bg-gray-300 h-48 rounded-md flex items-center justify-center text-gray-500">[Imagen Antes/Después Cómic]</div>
                     <p class="font-body mt-2 text-sm">Transformamos documentación técnica densa en una explicación visual clara.</p>
                 </div>
                  <!-- Placeholder Example 2 -->
-                <div class="comic-panel example-item" data-category="languages">
+                <div class="comic-panel example-item transform transition duration-300 hover:shadow-xl" data-category="languages">
                     <h4 class="font-heading text-xl text-secondary mb-2">Verbos Irregulares (Idiomas)</h4>
                      <div class="bg-gray-300 h-48 rounded-md flex items-center justify-center text-gray-500">[Imagen Antes/Después Cómic]</div>
                     <p class="font-body mt-2 text-sm">Convertimos reglas gramaticales aburridas en una historia memorable.</p>
                 </div>
                  <!-- Placeholder Example 3 -->
-                <div class="comic-panel example-item" data-category="health">
+                <div class="comic-panel example-item transform transition duration-300 hover:shadow-xl" data-category="health">
                     <h4 class="font-heading text-xl text-secondary mb-2">Proceso Quirúrgico (Salud)</h4>
                      <div class="bg-gray-300 h-48 rounded-md flex items-center justify-center text-gray-500">[Imagen Antes/Después Cómic]</div>
                     <p class="font-body mt-2 text-sm">Simplificamos información médica compleja para pacientes.</p>
                 </div>
                  <!-- Placeholder Example 4 -->
-                <div class="comic-panel example-item" data-category="corporate">
+                <div class="comic-panel example-item transform transition duration-300 hover:shadow-xl" data-category="corporate">
                     <h4 class="font-heading text-xl text-secondary mb-2">Onboarding Nuevo Empleado (Corp)</h4>
                      <div class="bg-gray-300 h-48 rounded-md flex items-center justify-center text-gray-500">[Imagen Antes/Después Cómic]</div>
                     <p class="font-body mt-2 text-sm">Hicimos el proceso de bienvenida más interactivo y ameno.</p>
@@ -301,7 +378,7 @@
                 <h2>Lo Que Dicen Nuestros Clientes</h2>
             </div>
             <div class="testimonials-carousel relative"> <!-- Placeholder for carousel -->
-                 <div class="comic-panel bg-panel1 p-8 max-w-2xl mx-auto">
+                 <div class="comic-panel bg-panel1 p-8 max-w-2xl mx-auto transform transition hover:scale-105">
                      <div class="flex items-center mb-4">
                          <!-- Placeholder Avatar -->
                          <div class="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center font-heading text-2xl mr-4 border-2 border-dark">JD</div>
@@ -319,7 +396,7 @@
         </section>
 
         <!-- 8. Formulario de Contacto -->
-        <section id="contact" class="comic-panel-large bg-panel2 my-16">
+        <section id="contact" class="comic-panel-large bg-panel2 my-16 rounded-xl">
             <div class="section-header">
                 <h2>¡Comienza Tu Proyecto!</h2>
                 <p>Cuéntanos sobre tu necesidad educativa y te contactaremos</p>
@@ -344,7 +421,7 @@
                             <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 border-2 border-dark rounded focus:outline-none focus:border-primary font-body"></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                            <button type="submit" class="btn-primary transform transition hover:scale-105">Enviar Mensaje</button>
                         </div>
                     </form>
                 </div>
@@ -374,33 +451,70 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                 <!-- Placeholder Logo -->
-                 <a href="#" class="text-2xl font-heading text-primary">StoryCanvas Edu</a>
-            </div>
-            <div class="footer-links font-body">
-                <a href="#hero">Inicio</a>
-                <a href="#services">Servicios</a>
-                <a href="#pricing">Precios</a>
-                <a href="#">Política de Privacidad</a> <!-- Placeholder -->
-                <a href="#">Términos de Servicio</a> <!-- Placeholder -->
-            </div>
-            <div class="footer-social">
-                <!-- Placeholder Social Icons -->
-                <a href="#" aria-label="LinkedIn"><svg><!-- Icon --></svg></a>
-                <a href="#" aria-label="Twitter"><svg><!-- Icon --></svg></a>
+    <!-- Footer - MEJORADO -->
+    <footer class="site-footer bg-secondary text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="footer-content flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="footer-logo">
+                     <a href="#" class="text-2xl font-heading text-white flex items-center">
+                        <span class="logo-text text-white">STORY</span><span class="logo-text text-accent">CANVAS</span>
+                        <span class="logo-badge bg-primary text-white">EDU</span>
+                     </a>
+                </div>
+                <div class="footer-links font-body flex flex-wrap justify-center gap-4">
+                    <a href="#hero" class="text-white hover:text-accent transition">Inicio</a>
+                    <a href="#services" class="text-white hover:text-accent transition">Servicios</a>
+                    <a href="#pricing" class="text-white hover:text-accent transition">Precios</a>
+                    <a href="#" class="text-white hover:text-accent transition">Política de Privacidad</a>
+                    <a href="#" class="text-white hover:text-accent transition">Términos de Servicio</a>
+                </div>
+                <div class="footer-social flex gap-4">
+                    <!-- Social Icons -->
+                    <a href="#" aria-label="LinkedIn" class="text-white hover:text-accent transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-white hover:text-accent transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright text-center text-sm text-gray-300 mt-6 pt-4 border-t border-gray-700">
             <p>&copy; 2025 StoryCanvas Educativo. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Basic JS for Mobile Menu -->
+    <!-- Scripts JavaScript -->
     <script>
+        // Script para resaltar la sección activa en el menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            function highlightNavigation() {
+                let scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNavigation);
+            highlightNavigation(); // Ejecutar al cargar
+        });
+        
+        // Menú móvil
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -408,21 +522,20 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close menu when a link is clicked (optional)
+        // Cerrar menú al hacer clic en un enlace
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
-    </script>
-     <!-- Basic JS for Example Filtering (Placeholder) -->
-    <script>
+        
+        // Filtrado de ejemplos
         const filterButtons = document.querySelectorAll('.filter-btn');
         const exampleItems = document.querySelectorAll('.example-item');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Update active button style
+                // Actualizar estilo del botón activo
                 filterButtons.forEach(btn => btn.classList.remove('bg-secondary', 'text-white'));
                 button.classList.add('bg-secondary', 'text-white');
 
@@ -430,9 +543,11 @@
 
                 exampleItems.forEach(item => {
                     if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block'; // Or use Tailwind classes like 'hidden', 'block'
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = 1, 50);
                     } else {
-                        item.style.display = 'none'; // Or use Tailwind classes
+                        item.style.opacity = 0;
+                        setTimeout(() => item.style.display = 'none', 300);
                     }
                 });
             });
